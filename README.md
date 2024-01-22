@@ -2,7 +2,7 @@
 
 ## Author
 
-
+Michael VanderMyde
 
 ## Description
 
@@ -122,9 +122,9 @@ Suggestion/Hints:
 
 ## Outside Resources Used
 
-
+None
 
 ## Known Problems, Issues, And/Or Errors in the Program
 
-
+None
 
