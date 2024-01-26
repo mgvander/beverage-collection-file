@@ -18,6 +18,8 @@ namespace cis237_assignment_1
                 // The user has chosen to read in the data from the
                 // .csv file
                 case 1:
+                    //
+                    CSVProcessor cSVProcessor = new CSVProcessor();
 
                     break;
 
