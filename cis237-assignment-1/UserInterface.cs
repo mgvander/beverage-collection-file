@@ -8,6 +8,9 @@ namespace cis237_assignment_1
 {
     internal class UserInterface
     {
+        /**************************************************************
+         * Methods
+         * ***********************************************************/
         public int GetMenuChoice()
         {
             //
@@ -25,6 +28,7 @@ namespace cis237_assignment_1
         {
             //
             Console.WriteLine("Choose a Number To Perform the Task");
+            Console.WriteLine("".PadRight(35, '-'));
             Console.WriteLine("1. Load File");
             Console.WriteLine("2. Print List");
             Console.WriteLine("3. Search List");

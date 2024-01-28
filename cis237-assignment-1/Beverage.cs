@@ -26,31 +26,31 @@ namespace cis237_assignment_1
          * Properties
          * ***********************************************************/
         //
-        private string Id
+        public string Id
         {
             get { return _id; }
             set { _id = value; }
         }  
         //
-        private string Name
+        public string Name
         {
             get { return _name; }
             set { _name = value; }
         }
         //
-        private string Pack
+        public string Pack
         {
             get { return _pack; }
             set { _pack = value; }
         }
         //
-        private decimal Price
+        public decimal Price
         {
             get { return _price; }
             set { _price = value; }
         }
         //
-        private bool Active
+        public bool Active
         {
             get { return _active; }
             set { _active = value; }
@@ -59,6 +59,11 @@ namespace cis237_assignment_1
         /**************************************************************
          * Constructors
          * ***********************************************************/
+        public Beverage()
+        {
+
+        }
+
         /// <summary>
         /// Used when creating an instance of the Beverage class
         /// </summary>
@@ -77,6 +82,9 @@ namespace cis237_assignment_1
 
         }
 
+        /**************************************************************
+         * Methods
+         * ***********************************************************/
         /// <summary>
         /// Create a formatted line made of data involving a single beverage
         /// </summary>
@@ -84,11 +92,23 @@ namespace cis237_assignment_1
         public override string ToString()
         {
             //
-            string beverageDataString = _id.PadRight(6) + _name.PadRight(55) + _pack.PadRight(20)
-                                      + _price.ToString().PadLeft(6) + _active.ToString().PadRight(6);
+            string outputString = "Id Code".PadRight(9)
+                                    + "Beverage Name".PadRight(57)
+                                    + "Packaging".PadRight(18)
+                                    + "Price".PadLeft(7)
+                                    + "  " + "Active Status".PadRight(6)
+                                + Environment.NewLine + "".PadRight(106, '-')
+                                + Environment.NewLine;
+            //
+            outputString += _id.PadRight(6) 
+                              + _name.PadRight(57)
+                              + _pack.PadRight(18)
+                              + _price.ToString("c").PadLeft(7)
+                              + " " + _active.ToString().PadRight(6)
+                          + Environment.NewLine;
 
             //
-            return beverageDataString;
+            return outputString;
         }
 
     }

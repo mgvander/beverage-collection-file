@@ -9,30 +9,34 @@ namespace cis237_assignment_1
 {
     internal class CSVProcessor
     {
-        public bool ImportCSVFile(string passPathToCSVFile)
+
+        /**************************************************************
+         * Methods
+         * ***********************************************************/
+        public bool ImportCSVFile(string passPathToCSVFileString, BeverageCollection passBeverageCollection)
         {
             //
             StreamReader streamReader = null;
             
             try
             {
-                //
-                streamReader = new StreamReader(passPathToCSVFile);
-
                 // Counts the line in the list of beverages, but
                 // starts at 0 becasue the first index of an array
                 // starts at 0
-                int counter = 0;
+                int counterInt = 0;
 
                 // Contents of a line read in from the list of
                 // beverages
-                string currentLine;
+                string currentLineString;
 
                 //
-                while ((currentLine = streamReader.ReadLine()) != null)
+                streamReader = new StreamReader(passPathToCSVFileString);
+
+                //
+                while ((currentLineString = streamReader.ReadLine()) != null)
                 {
                     //
-                    this.ProcessLine(counter++, currentLine);
+                    this.ProcessLine(counterInt++, currentLineString, passBeverageCollection);
 
                 }
 
@@ -66,10 +70,26 @@ namespace cis237_assignment_1
 
         }
 
-        private void ProcessLine(int index, string currentLine)
+        private void ProcessLine(int passIndexInt, string passCurrentLineString, BeverageCollection passBeverageCollection)
         {
             //
+            string[] lineParts = passCurrentLineString.Split(',');
 
+            //
+            string idString = lineParts[0];
+            string nameString = lineParts[1];
+            string packString = lineParts[2];
+            decimal priceDecimal = decimal.Parse(lineParts[3]);
+            bool activeBool = bool.Parse(lineParts[4]);
+
+            //
+            Beverage beverage = new Beverage(idString, nameString, packString, priceDecimal, activeBool);            
+
+            //
+            passBeverageCollection.Add(passIndexInt, beverage);
+
+            //
+            //BeverageCollection beverageCollection = new BeverageCollection(passIndex, beverageId, beverageName, beveragePack, beveragePrice, beverageActivity);
 
         }
 
