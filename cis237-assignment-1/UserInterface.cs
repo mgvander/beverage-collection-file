@@ -39,6 +39,62 @@ namespace cis237_assignment_1
 
         }
 
+        public void DisplayInstruction()
+        {
+            //
+            Console.WriteLine();
+            Console.WriteLine("Please enter a beverage id code.");
+            Console.WriteLine();
+            Console.Write("=> ");
+
+        }
+
+        public void DisplayInstruction(BeverageCollection passBeverageCollection)
+        {
+            //
+            Console.WriteLine();
+            Console.WriteLine("Enter the beverage's id code.");
+            Console.Write("=> ");
+
+            string idInputString = Console.ReadLine();
+
+            //
+            Console.WriteLine();
+            Console.WriteLine("Enter the name of the beverage.");
+            Console.Write("=> ");
+
+            string nameInputString = Console.ReadLine();
+
+            //
+            Console.WriteLine();
+            Console.WriteLine("Enter the packing information.");
+            Console.Write("=> ");
+
+            string packInputString = Console.ReadLine();
+
+            //
+            Console.WriteLine();
+            Console.WriteLine("Enter the beverage's price.");
+            Console.Write("=> ");
+
+            Decimal.TryParse(Console.ReadLine(), out decimal priceInputDecimal);
+
+            //
+            Console.WriteLine();
+            Console.WriteLine("The beverage is still active? (True or False)");
+            Console.Write("=> ");
+
+            Boolean.TryParse(Console.ReadLine(), out bool activeInputBool);
+            Console.WriteLine();
+
+            //
+            Beverage beverage = new Beverage(idInputString, nameInputString, packInputString, priceInputDecimal, activeInputBool);
+
+            //
+            passBeverageCollection.FindFreeLine(beverage);
+
+        }
+                
     }
 
 }

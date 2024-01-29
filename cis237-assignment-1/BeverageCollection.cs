@@ -31,21 +31,52 @@ namespace cis237_assignment_1
         /**************************************************************
          * Methods
          * ***********************************************************/
-        public void Add(int passIndexInt, Beverage passBeverage)
+        public bool Add(int passIndexInt, Beverage passBeverage)
+        {
+            if (beverages[passIndexInt] == null)
+            {
+                //
+                beverages[passIndexInt] = passBeverage;
+
+                //
+                return true;
+
+            }
+            //
+            else
+            {
+                //
+                return false;
+
+            }
+            
+        }
+
+        public void FindFreeLine(Beverage passBeverage)
         {
             //
-            beverages[passIndexInt] = passBeverage;
+            int indexInt = 0;
+
+            //
+            bool addedBool = false;
+            
+            //
+            while ((indexInt < beverages.Length) && !addedBool)
+            {
+                //
+                addedBool = this.Add(indexInt, passBeverage);
+
+                //
+                ++indexInt;
+
+            }
 
         }
-        public bool Search()
+
+        public bool Search(string passSoughtId)
         {
             //
-            Console.WriteLine("Please enter a beverage id code.");
-            Console.WriteLine();
-            Console.Write("=> ");
-
-            //
-            string soughtId = Console.ReadLine();
+            UserInterface userInterface = new UserInterface();
 
             //
             for (int indexInt = 0; indexInt < beverages.Length; ++indexInt)
@@ -59,12 +90,13 @@ namespace cis237_assignment_1
                 if (beverage != null)
                 {
                     //
-                    if (beverage.Id == soughtId)
+                    if (beverage.Id == passSoughtId)
                     {
                         //
                         string beverageDataString = beverage.ToString();
 
                         //
+                        Console.WriteLine();
                         Console.WriteLine("Located Beverage"
                                           + Environment.NewLine + "".PadRight(16, '-'));
                         Console.WriteLine(beverageDataString);

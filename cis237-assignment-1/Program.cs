@@ -11,7 +11,10 @@ namespace cis237_assignment_1
             int exitInt = 5;
 
             // Has the .csv file been imported?
-            bool importedBool = false;
+            bool fileImportedBool = false;
+
+            //
+            bool elementsExistBool = false;
 
             //
             string outputString;
@@ -35,7 +38,7 @@ namespace cis237_assignment_1
                     // .csv file
                     case 1:
                         //
-                        if (!importedBool)
+                        if (!fileImportedBool)
                         {
                             //
                             CSVProcessor cSVProcessor = new CSVProcessor();
@@ -44,7 +47,10 @@ namespace cis237_assignment_1
                             string PathToCSVFile = "../../../../datafiles/beverage_list.csv";
 
                             //
-                            importedBool = cSVProcessor.ImportCSVFile(PathToCSVFile, beverageCollection);
+                            fileImportedBool = cSVProcessor.ImportCSVFile(PathToCSVFile, beverageCollection);
+
+                            //
+                            elementsExistBool = fileImportedBool;
 
                             //
                             Console.WriteLine("File was successfully imported.");
@@ -65,12 +71,13 @@ namespace cis237_assignment_1
                     // of the list of beverages
                     case 2:
                         //
-                        if (importedBool)
+                        if (elementsExistBool)
                         {
                             //
                             outputString = beverageCollection.ToString();
 
                             //
+                            Console.WriteLine();
                             Console.Write(outputString);
                             Console.WriteLine();
 
@@ -89,10 +96,16 @@ namespace cis237_assignment_1
                     // the beverages by their identifier code
                     case 3:
                         //
-                        if (importedBool)
+                        if (elementsExistBool)
                         {
                             //
-                            if (!beverageCollection.Search())
+                            userInterface.DisplayInstruction();
+
+                            //
+                            string soughtId = Console.ReadLine();
+
+                            //
+                            if (!beverageCollection.Search(soughtId))
                             {
                                 //
                                 ErrorMessage(choiceInt);
@@ -113,6 +126,11 @@ namespace cis237_assignment_1
                     // The user has chosen to add a beverage to the list
                     // of beverages
                     case 4:
+                        //
+                        userInterface.DisplayInstruction(beverageCollection);
+
+                        //
+                        elementsExistBool = true;
 
                         break;
 
@@ -132,10 +150,10 @@ namespace cis237_assignment_1
 
         }
 
-        private static void ErrorMessage(int passAction)
+        private static void ErrorMessage(int passActionInt)
         {
             //
-            switch (passAction)
+            switch (passActionInt)
             {
                 case 1:
                     //
@@ -160,6 +178,8 @@ namespace cis237_assignment_1
                     break;
 
                 case 4:
+                    //
+
 
                     break;
 

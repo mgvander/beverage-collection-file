@@ -100,11 +100,11 @@ namespace cis237_assignment_1
                                 + Environment.NewLine + "".PadRight(106, '-')
                                 + Environment.NewLine;
             //
-            outputString += _id.PadRight(6) 
+            outputString += _id.PadRight(9) 
                               + _name.PadRight(57)
                               + _pack.PadRight(18)
                               + _price.ToString("c").PadLeft(7)
-                              + " " + _active.ToString().PadRight(6)
+                              + "  " + _active.ToString().PadRight(6)
                           + Environment.NewLine;
 
             //
