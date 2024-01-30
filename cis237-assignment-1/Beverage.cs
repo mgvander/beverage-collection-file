@@ -59,9 +59,12 @@ namespace cis237_assignment_1
         /**************************************************************
          * Constructors
          * ***********************************************************/
+        /// <summary>
+        /// Empty constructor for creating new beverages from existing
+        /// beverages with all their properties
+        /// </summary>
         public Beverage()
         {
-
         }
 
         /// <summary>
@@ -91,7 +94,7 @@ namespace cis237_assignment_1
         /// <returns> Concatenated string of all data points involved with one beverage </returns>
         public override string ToString()
         {
-            //
+            // Header for each data point in the list list
             string outputString = "Id Code".PadRight(9)
                                     + "Beverage Name".PadRight(57)
                                     + "Packaging".PadRight(18)
@@ -99,7 +102,8 @@ namespace cis237_assignment_1
                                     + "  " + "Active Status".PadRight(6)
                                 + Environment.NewLine + "".PadRight(106, '-')
                                 + Environment.NewLine;
-            //
+
+            // Format and concatenate the different properties of the item 
             outputString += _id.PadRight(9) 
                               + _name.PadRight(57)
                               + _pack.PadRight(18)
@@ -107,7 +111,7 @@ namespace cis237_assignment_1
                               + "  " + _active.ToString().PadRight(6)
                           + Environment.NewLine;
 
-            //
+            // The header and formatted/concatenated line of a single beverage
             return outputString;
         }
 

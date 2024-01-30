@@ -126,7 +126,6 @@ None
 
 ## Known Problems, Issues, And/Or Errors in the Program
 
-Beverages added to the list by the user are found at the bottom instead of alphabetical order of name.
 Beverages add to the list can be added with id codes identical to beverages already in the list.
 
 
